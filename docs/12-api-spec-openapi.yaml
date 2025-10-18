@@ -1,0 +1,68 @@
+openapi: 3.0.3
+info:
+  title: InterviewOps API
+  version: 0.1.0
+servers:
+  - url: http://localhost:8080/api
+paths:
+  /auth/login:
+    post:
+      summary: Login e emissão de JWT
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/LoginRequest" }
+      responses:
+        "200":
+          {
+            description: OK,
+            content:
+              {
+                application/json:
+                  { schema: { $ref: "#/components/schemas/JwtResponse" } },
+              },
+          }
+  /companies:
+    get:
+      summary: Listar companies
+      parameters:
+        - in: query
+          name: q
+          schema: { type: string }
+        - in: query
+          name: page
+          schema: { type: integer, minimum: 0, default: 0 }
+        - in: query
+          name: size
+          schema: { type: integer, minimum: 1, default: 20 }
+      responses:
+        "200": { description: OK }
+    post:
+      summary: Criar company
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/CompanyCreate" }
+      responses:
+        "201": { description: Created }
+components:
+  schemas:
+    LoginRequest:
+      type: object
+      required: [email, password]
+      properties:
+        email: { type: string, format: email }
+        password: { type: string, minLength: 6 }
+    JwtResponse:
+      type: object
+      properties:
+        token: { type: string }
+    CompanyCreate:
+      type: object
+      required: [name]
+      properties:
+        name: { type: string }
+        website: { type: string, nullable: true }
+        notes: { type: string, nullable: true }
