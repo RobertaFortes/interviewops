@@ -90,3 +90,7 @@ Adotamos o **Outbox Pattern** para gerenciar o envio de lembretes por e-mail.
 - [Transactional Outbox Pattern - Microservices.io](https://microservices.io/patterns/data/transactional-outbox.html)
 - [Reliable Microservices Data Exchange With the Outbox Pattern](https://debezium.io/blog/2019/02/19/reliable-microservices-data-exchange-with-the-outbox-pattern/)
 - [Enterprise Integration Patterns - Guaranteed Delivery](https://www.enterpriseintegrationpatterns.com/patterns/messaging/GuaranteedMessaging.html)
+
+
+## Revisões Técnicas
+- [Revisão de 18/10/2025](reviews/0002-outbox-pattern-review-2025-10-18.md) — status: em análise
